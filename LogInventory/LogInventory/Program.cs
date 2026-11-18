@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.Text;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Operations;
@@ -42,7 +43,7 @@ foreach (var sourceFile in sourceFiles)
     FindLogUsage(sourceFile, logInventoryList);
 }
 
-using var writer = File.AppendText(savePath);
+using var writer = new StreamWriter(savePath, false, Encoding.UTF8);
 writer.WriteLine("Path; FileName; Level; Last modified; Body");
 
 foreach (var logInventory in logInventoryList)
