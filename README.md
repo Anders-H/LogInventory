@@ -1,6 +1,6 @@
 # LogInventory
 
-LogInventory is a command-line tool for auditing what a C# codebase can write to its logs. It scans `.cs` files recursively for logging calls on `ILogger` and `ILogger<T>` and writes one row per detected call to a semicolon-delimited CSV file. The report includes the source directory, file name, log level, file modification date, and message or message template.
+LogInventory is a command-line tool for auditing what a C# codebase can write to its logs. It scans `.cs` files recursively for logging calls on `ILogger` and `ILogger<T>` and writes one row per detected call to a semicolon-delimited CSV file.
 
 ## Build and run
 
@@ -15,4 +15,12 @@ dotnet run --project LogInventory/LogInventory/LogInventory.csproj --no-build
 2. At `Save path:`, enter the destination CSV file path, such as `log-inventory.csv`.
 3. If the destination file already exists, enter `y` to overwrite it or `n` to cancel.
 
-The report describes logging calls found in source code. Message templates keep their placeholders, and values computed at runtime are shown as source expressions where available.
+## CSV columns
+
+| Column | Contents |
+| --- | --- |
+| `Path` | Absolute path to the directory containing the source file. |
+| `FileName` | Name of the source file, including the `.cs` extension. |
+| `Level` | Log level, such as `Info`, `Debug`, or `Error`. If the level is determined at runtime, the report shows the source expression where available. |
+| `Last modified` | Date the source file was last modified, in `YYYY-MM-DD` format. |
+| `Body` | Message text or message template, including placeholders such as `{Name}`. If the message is determined at runtime, the report shows the source expression where available. |
