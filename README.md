@@ -11,6 +11,8 @@ dotnet build LogInventory/LogInventory/LogInventory.csproj
 dotnet run --project LogInventory/LogInventory/LogInventory.csproj --no-build
 ```
 
+## Usage
+
 1. At `Root path:`, enter the directory containing the C# source code you want to scan.
 2. At `Save path:`, enter the destination CSV file path, such as `log-inventory.csv`.
 3. If the destination file already exists, enter `y` to overwrite it or `n` to cancel.
